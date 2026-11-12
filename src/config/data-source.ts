@@ -8,7 +8,7 @@ import { DetalleVenta } from "../entities/DetalleVenta.js";
 export const AppDataSource = new DataSource({
     type: "mysql", // O "mariadb"
     host: "localhost",
-    port: 3307,
+    port: 3315,
     username: "root",
     password: "secret",
     database: "logiexpress_db",
