@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     port: 3307,
     username: "root",
     password: "secret",
-    database: "ventas_db",
+    database: "logiexpress_db",
     synchronize: false, // Se mantiene false ya que las tablas fueron creadas previamente por SQL
     logging: true,
     entities: [Categoria, Producto, Venta, DetalleVenta],

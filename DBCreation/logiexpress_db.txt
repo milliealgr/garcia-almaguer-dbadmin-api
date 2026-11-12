@@ -1,0 +1,69 @@
+Table client {
+  id integer [primary key, increment]
+  name varchar [not null]
+  state varchar [not null, check: `state in ('active', 'inactive')`]
+  creditLimit integer [not null]
+}
+
+Table address {
+  id integer [primary key, increment]
+  originAddress varchar [not null]
+  destinationAddress varchar [not null]
+  idClient integer [not null]
+}
+
+Table shipment {
+  id integer [primary key, increment]
+  idSender integer [not null]
+  idRecipient integer [not null]
+  totalCost decimal [not null]
+  date datetime [not null]
+  state varchar [not null, check: `state in ('registered', 'in_transit', 'delivered', 'canceled')`] 
+}
+
+Table package {
+  id integer [primary key, increment]
+  weight decimal [not null]
+  dimensions varchar [not null]
+  contents varchar [not null]
+
+  idShipment integer [not null]
+  idWarehouse integer [not null]
+}
+
+Table warehouse {
+  id integer [primary key, increment]
+  name varchar [not null]
+  location varchar [not null]
+  maxCapacity integer [not null]
+}
+
+Table tracking_history {
+  id integer [primary key, increment]
+  date datetime [not null]
+  currentLocation varchar [not null]
+  eventState varchar [not null]
+  remarks varchar [not null]
+
+  idShipment integer [not null]
+}
+
+Table shipment_audit {
+  id integer [primary key, increment]
+  previousCost decimal [not null]
+  newCost decimal [not null]
+  user varchar [not null]
+  date datetime [not null]
+
+  idShipment integer [not null]
+}
+
+Ref: address.idClient > client.id
+Ref: shipment.idSender > client.id
+Ref: shipment.idRecipient > client.id
+
+Ref: package.idShipment > shipment.id
+Ref: tracking_history.idShipment > shipment.id
+Ref: shipment_audit.idShipment > shipment.id
+
+Ref: package.idWarehouse > warehouse.id
