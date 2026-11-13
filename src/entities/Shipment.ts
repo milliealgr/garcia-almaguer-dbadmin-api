@@ -32,7 +32,7 @@ export class Shipment {
     @JoinColumn({ name: "idRecipient" })
     recipient!: Relation<Client>;
 
-    @OneToMany(() => Package, (row) => row.shipment)
+    @OneToMany(() => Package, (row) => row.shipment, { cascade: ["insert"] })
     packages!: Relation<Package[]>;
 
     @OneToMany(() => TrackingHistory, (row) => row.shipment)

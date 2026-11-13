@@ -1,17 +1,13 @@
-import express, { Request, Response } from 'express';
-import productoRoutes from './routes/producto.routes.js';
-import userRoutes from './routes/user.routes.js';
-import ventaRoutes from "./routes/venta.routes.js";
+import express from 'express';
+import shipmentRoutes from "./routes/shipment.route.js";
+import packageRoutes from "./routes/package.route.js";
+import trackingHistoryRoutes from "./routes/trackingHistory.route.js";
 
 const app = express();
 
 app.use(express.json());
-app.use('/api', userRoutes);
-app.use('/api', productoRoutes);
-app.use('/api', ventaRoutes)
-
-app.get('/api/status', (req: Request, res: Response) => {
-  res.json({ status: 'OK', message: 'API working correctly' });
-});
+app.use('/api', shipmentRoutes);
+app.use('/api', packageRoutes);
+app.use('/api', trackingHistoryRoutes);
 
 export default app;

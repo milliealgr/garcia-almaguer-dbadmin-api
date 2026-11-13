@@ -18,6 +18,4 @@ export const AppDataSource = new DataSource({
     synchronize: false, 
     logging: true,
     entities: [Client, Address, Shipment, Warehouse, Package, TrackingHistory, ShipmentAudit],
-    subscribers: [],
-    migrations: [],
 });
