@@ -1,20 +1,23 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Categoria } from "../entities/Categoria.js";
-import { Producto } from "../entities/Producto.js";
-import { Venta } from "../entities/Venta.js";
-import { DetalleVenta } from "../entities/DetalleVenta.js";
+import { Client } from "../entities/Client.js";
+import { Address } from "../entities/Address.js";
+import { Shipment } from "../entities/Shipment.js";
+import { Warehouse } from "../entities/Warehouse.js";
+import { Package } from "../entities/Package.js";
+import { TrackingHistory } from "../entities/TrackingHistory.js";
+import { ShipmentAudit } from "../entities/ShipmentAudit.js";
 
 export const AppDataSource = new DataSource({
-    type: "mysql", // O "mariadb"
+    type: "mysql", 
     host: "localhost",
     port: 3315,
     username: "root",
     password: "secret",
     database: "logiexpress_db",
-    synchronize: false, // Se mantiene false ya que las tablas fueron creadas previamente por SQL
+    synchronize: false, 
     logging: true,
-    entities: [Categoria, Producto, Venta, DetalleVenta],
+    entities: [Client, Address, Shipment, Warehouse, Package, TrackingHistory, ShipmentAudit],
     subscribers: [],
     migrations: [],
 });

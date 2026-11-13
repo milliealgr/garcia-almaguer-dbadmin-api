@@ -11,7 +11,7 @@ app.use('/api', productoRoutes);
 app.use('/api', ventaRoutes)
 
 app.get('/api/status', (req: Request, res: Response) => {
-  res.json({ status: 'OK', message: 'API funcionando correctamente' });
+  res.json({ status: 'OK', message: 'API working correctly' });
 });
 
 export default app;
