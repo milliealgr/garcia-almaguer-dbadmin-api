@@ -7,8 +7,8 @@ export class PackageRepository {
     private repository = AppDataSource.getRepository(Package);
 
     async addWarehousePackage(idShipment: number, item: PackageInput): Promise<Package> {
-        const parcel = this.repository.create({ ...item, idShipment });
-        return this.repository.save(parcel);
+        const newPackage = this.repository.create({ ...item, idShipment });
+        return this.repository.save(newPackage);
     }
 }
 
