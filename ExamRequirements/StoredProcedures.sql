@@ -21,7 +21,7 @@ begin
     where s.idSender = p_clientId
       and month(s.date) = p_month
       and year(s.date) = p_year
-      and s.state <> 'canceled';
+      and s.state != 'canceled';
 end
 
 call sp_monthly_client_report(1, 11, 2026);
